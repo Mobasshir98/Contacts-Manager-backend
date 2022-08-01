@@ -38,10 +38,11 @@ app.use((req, res, next) => {
         }
     }
 });
-const filepath=path.join(__dirname, 'public','csvuploads')
+// const filepath=path.join(__dirname, 'public','csvuploads')
+// console.log(filepath)
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, filepath)
+        cb(null, './public/csvuploads')
     },
     filename: (req, file, cb) => {
         cb(null, file.originalname);
