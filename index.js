@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cors())
 app.use((req, res, next) => {
     if (unProtectedRoutes.includes(req.url)) {
-        next();
+        next(); 
     } else {
         if (req.headers.authorization) {
             jwt.verify(req.headers.authorization, process.env.SECRET_KEY,(err,mailid)=>{
