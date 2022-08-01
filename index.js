@@ -55,7 +55,7 @@ app.use(express.static(path.resolve(__dirname, 'public')))
 
 app.post('/signup', async (req, res) => {
     if (await checkExistingUser(req.body.mailid)) {
-        res.status(400).send("EmailID exist. Please try with different Email");
+        res.status(400).send("EmailID exists. Please try with different Email");
     } else {
         generatePasswordHash(req.body.password).then((passwordHash) => {
             signupModal.create({
@@ -98,7 +98,7 @@ app.get('/', async (req, res) => {
     }
 })
 
-app.post('/', csvuploads.single('file'), (req, res) => {
+app.post('/post', csvuploads.single('file'), (req, res) => {
     csv()
         .fromFile(req.file.path)
         .then(async (jsonObj) => {
